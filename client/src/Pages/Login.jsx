@@ -1,7 +1,14 @@
 import React from 'react'
+import { ContentWrapper } from '../Components/ContentWrapper/ContentWrapper'
+import { Layout } from '../Components/Layout/Layout'
 
 export const Login = () => {
   return (
-    <div>Login</div>
+    <ContentWrapper title='Login'>
+    <Layout>
+
+
+    </Layout>
+    </ContentWrapper>
   )
 }

@@ -1,7 +1,14 @@
 import React from 'react'
+import { ContentWrapper } from '../Components/ContentWrapper/ContentWrapper'
+import { Layout } from '../Components/Layout/Layout'
 
 export const Products = () => {
   return (
-    <div>Products</div>
+    <ContentWrapper title='Produkter'>
+      <Layout>
+
+
+      </Layout>
+    </ContentWrapper>
   )
 }

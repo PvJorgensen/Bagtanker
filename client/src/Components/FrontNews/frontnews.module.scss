@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.newsWrapper {
+    font-family: "Open Sans", sans-serif;
+    h2{
+        position: relative;
+        margin-left: 200px;
+        margin-top: 30px;
+        font-weight: 400;
+        font-size: 40px;
+    }
+}
+
+.newsContainer {
+    position: fixed; /* Ensure the container is fixed relative to the viewport */
+    top: 180px; /* Adjust the top position as needed */
+    left: 200px; /* Adjust the left position as needed */
+    width: 40%; /* Adjust the width as needed */
+    background-color: rgba(50, 53, 60, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000; /* Ensure the container appears above other content */
+
+    .articles:last-child{
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .articles {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin-bottom: 25px;
+        opacity: 80%;
+        gap: 0.5rem;
+        width: 100%;
+
+        h5{
+            color: white;
+            font-size: 17px;
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid white;
+        }
+
+        p {
+            font-size: 15px;
+            color: white;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+    }
+}

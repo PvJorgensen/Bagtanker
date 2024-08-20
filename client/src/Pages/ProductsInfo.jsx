@@ -1,7 +1,13 @@
 import React from 'react'
+import { Layout } from '../Components/Layout/Layout'
 
 export const ProductsInfo = () => {
   return (
-    <div>ProductsInfo</div>
+    <ContentWrapper title='Produkts Information'>
+      <Layout>
+
+
+      </Layout>
+    </ContentWrapper>
   )
 }

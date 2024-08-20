@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.burgerMenu {
+    position: relative;
+  }
+  
+  .burgerIcon {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 3;
+    position: relative;
+  }
+  
+  .line {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .line1Open {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .line2Open {
+    opacity: 0;
+  }
+  
+  .line3Open {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  .menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 500px; /* Adjust the width as needed */
+    height: 100%;
+    background-color: rgba(69, 71, 83, 0.9); /* 90% opacity */
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 2;
+    overflow: hidden;
+  }
+  
+  
+  .menuOpen {
+    transform: translateX(0);
+  }
+  
+  .menu ul {
+    list-style: none;
+    width: 60%;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 150px;
+    height: 100%;
+  }
+  
+  .menu li {
+    margin: 20px 0;
+  }
+  
+  .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s ease;
+    font-family: "Open Sans", sans-serif;
+  }
+  
+  .menu a:hover {
+    color: #aaa;
+  }
+  
