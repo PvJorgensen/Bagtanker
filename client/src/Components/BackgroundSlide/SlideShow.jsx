@@ -20,7 +20,7 @@ export const SlideShow = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % slideImages.length);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [slideImages.length]);
