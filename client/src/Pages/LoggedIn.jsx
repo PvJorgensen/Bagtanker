@@ -5,10 +5,8 @@ import { Layout } from '../Components/Layout/Layout'
 export const LoggedIn = () => {
   return (
     <ContentWrapper title='Logged Ind'>
-      <Layout>
-
-
-      </Layout>
+      <Layout/>
+    <div>YOU ARE NOW LOGGED IN!!!</div>
     </ContentWrapper>
   )
 }
