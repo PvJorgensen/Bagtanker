@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.watchNav {
+    font-family: "Open Sans", sans-serif;
+    margin-top: 20px;
+    margin-left: 20.5%;
+    margin-bottom: 20px;
+    font-size: 14px;
+    a {
+        text-decoration: none;
+        color: gray;
+        transition: color 0.5s ease;
+        &:first-child {
+            margin-left: 7px;
+        }
+        &:hover {
+            color: black;
+        }
+    }
+    p {
+        color: gray;
+    }
+}

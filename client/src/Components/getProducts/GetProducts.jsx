@@ -17,7 +17,7 @@ export const GetProducts = () => {
                 .select("products(id,title,teaser , images(filename))")
                 .eq('category_id', category)
             if (error) {
-                console.error("Error Loading News");
+                console.error("Error Loading products");
             } else {
                 console.log(data);
                 setProducts(data);
@@ -39,9 +39,6 @@ export const GetProducts = () => {
             }
         }
     }
-
-    console.log(title);
-    
 
     useEffect(() => {
         getData();
@@ -65,7 +62,7 @@ export const GetProducts = () => {
                         <img src={item.products.images.filename} alt="" />
                         <div>
                         <h4>{item.products.title}</h4>
-                        <p>{truncateText(item.products.teaser, 45)}</p>
+                        <p>{truncateText(item.products.teaser, 27)}</p>
                         <button>Læs mere</button>
                         </div>
                     </section>

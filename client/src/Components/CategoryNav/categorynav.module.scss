@@ -1,67 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
 .navMain {
     background-color: #323540;
     font-family: "Open Sans", sans-serif;
-
+  
     ul {
-        width: 50%;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        padding: 20px;
-        li {
-            list-style: none;
-        }
+      width: 50%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+  
+      li {
+        list-style: none;
+        position: relative;  // Tilføj position: relative for at sikre, at pilen placeres korrekt
 
         a {
-            list-style: none;
+            text-decoration: none;
             color: white;
-            position: relative;
-            padding: 10px;
-            cursor: pointer;
-
-            &.active {
-                color: #fec76f;  // Different color for the active item
-
-                // Arrow pointing upwards
-                &::after {
-                    content: '';
-                    position: absolute;
-                    width: 0;
-                    height: 0;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    top: 49px;  // Position above the text
-                    border-left: 15px solid transparent;
-                    border-right: 15px solid transparent;
-                    border-bottom: 15px solid #fec76f;  // Arrow color, now pointing upwards
-                    z-index: 2;  // Ensure it's above the shadow
-                }
-
-                // Shadow for the arrow
-                &::before {
-                    content: '';
-                    position: absolute;
-                    width: 0;
-                    height: 0;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    top: 51px;  // Slightly below the arrow to create shadow effect
-                    border-left: 15px solid transparent;
-                    border-right: 15px solid transparent;
-                    border-bottom: 15px solid rgba(0, 0, 0, 0.3);  // Black shadow with transparency
-                    z-index: 1;  // Ensure it's below the arrow
-                }
-            }
-
-            &:hover {
-                color: #fec76f;  // Optional: Change color on hover
-            }
         }
+  
+        &.active {
+          a {
+            color: #D89F5F; // Farve for det aktive link
+  
+            // Pil, der peger opad
+            &::after {
+              content: '';
+              position: absolute;
+              width: 0;
+              height: 0;
+              left: 50%;
+              transform: translateX(-50%);
+              top: 30px; // Flytter pilen højere op
+              border-left: 15px solid transparent;
+              border-right: 15px solid transparent;
+              border-bottom: 15px solid #fec76f; // Pilens farve
+              z-index: 10; // Sørg for, at pilen er foran andre elementer
+            }
+          }
+        }
+      }
     }
-}
-
-h2 {
+  }
+  
+  h2 {
     margin-left: 20.5%;
-}
+  }
+  
