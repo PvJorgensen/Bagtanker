@@ -10,8 +10,11 @@
         display: flex;
         justify-content: space-between;
         padding: 20px;
-
         li {
+            list-style: none;
+        }
+
+        a {
             list-style: none;
             color: white;
             position: relative;
@@ -57,4 +60,8 @@
             }
         }
     }
+}
+
+h2 {
+    margin-left: 20.5%;
 }

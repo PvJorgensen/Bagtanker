@@ -1,29 +1,52 @@
 import React, { useEffect, useState } from 'react'
 import { useSupabase } from '../../Providers/SupabaseProvider';
 import styles from './getproducts.module.scss'
+import { useParams } from 'react-router-dom';
 
 export const GetProducts = () => {
 
     const [products, setProducts] = useState([])
     const { supabase } = useSupabase()
+    const { category } = useParams()
+    const [title, setTitle] = useState([])
 
     const getData = async () => {
         if (supabase) {
             const { data, error } = await supabase
-                .from("products")
-                .select("id,images(id,filename),title,teaser,description,duration,amount,price");
+                .from("category_product_rel")
+                .select("products(id,title,teaser , images(filename))")
+                .eq('category_id', category)
             if (error) {
                 console.error("Error Loading News");
             } else {
-                const sortedData = data.sort(() => 0.5 - Math.random());
-                setProducts(sortedData);
+                console.log(data);
+                setProducts(data);
             }
         }
     };
 
+    const getTitle = async () => {
+        if (supabase) {
+            const {data, error } = await supabase
+                .from("categories")
+                .select("title")
+                .eq('id', category)
+                .single()
+            if (error) {
+                console.error("Error getting title");
+            } else {
+                setTitle(data.title)
+            }
+        }
+    }
+
+    console.log(title);
+    
+
     useEffect(() => {
         getData();
-    }, [supabase]);
+        getTitle();
+    }, [supabase, category]);
 
     const truncateText = (text, wordLimit) => {
         if (!text) return '';
@@ -34,14 +57,15 @@ export const GetProducts = () => {
 
   return (
     <div>
+        <h2>{title}</h2>
         <div className={styles.productWrapper}>
-            {products &&
-                products.slice(0, 4).map((item) => (
-                    <section key={item.id} className={styles.products}>
-                        <img src={item.images.filename} alt="" />
+            {products && 
+                products.map((item) => (
+                    <section key={item.products.id} className={styles.products}>
+                        <img src={item.products.images.filename} alt="" />
                         <div>
-                        <h4>{item.title}</h4>
-                        <p>{truncateText(item.teaser, 45)}</p>
+                        <h4>{item.products.title}</h4>
+                        <p>{truncateText(item.products.teaser, 45)}</p>
                         <button>Læs mere</button>
                         </div>
                     </section>
