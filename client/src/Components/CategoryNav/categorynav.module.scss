@@ -11,7 +11,7 @@
   
       li {
         list-style: none;
-        position: relative;  // Tilføj position: relative for at sikre, at pilen placeres korrekt
+        position: relative;  
 
         a {
             text-decoration: none;
@@ -20,9 +20,9 @@
   
         &.active {
           a {
-            color: #D89F5F; // Farve for det aktive link
+            color: #D89F5F; 
   
-            // Pil, der peger opad
+            
             &::after {
               content: '';
               position: absolute;
@@ -30,15 +30,19 @@
               height: 0;
               left: 50%;
               transform: translateX(-50%);
-              top: 30px; // Flytter pilen højere op
+              top: 30px; 
               border-left: 15px solid transparent;
               border-right: 15px solid transparent;
-              border-bottom: 15px solid #fec76f; // Pilens farve
-              z-index: 10; // Sørg for, at pilen er foran andre elementer
+              border-bottom: 15px solid #fec76f; 
+              z-index: 10; 
             }
           }
         }
       }
     }
+  }
+  
+  h2 {
+    margin-left: 20.5%;
   }
   

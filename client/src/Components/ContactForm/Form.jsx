@@ -33,7 +33,6 @@ export const Form = () => {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      // Submit the form or do something else
       console.log('Form submitted', { name, email, message });
       setErrors({});
     }

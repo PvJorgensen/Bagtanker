@@ -5,7 +5,6 @@ export const Footer = () => {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.content}>
-        {/* Other content of the page */}
       </div>
       <footer className={styles.footerMain}>
         <section>

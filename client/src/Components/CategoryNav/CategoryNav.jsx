@@ -6,7 +6,7 @@ import { useSupabase } from '../../Providers/SupabaseProvider';
 export const CategoryNav = () => {
   const [category, setCategory] = useState([]);
   const { supabase } = useSupabase();
-  const location = useLocation();  // Brug location til at få den aktuelle sti
+  const location = useLocation();  // Bruges location til at få den aktuelle sti
 
   const getData = async () => {
     if (supabase) {
