@@ -7,7 +7,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    a {
+        text-decoration: none;
+    
     h1 {
         font-size: 60px;
         position: relative;
@@ -17,6 +19,7 @@ header {
         margin-top: 20px;
         margin-left: 50px;
         color: #323540;
+    }
     }
 
     .circle {
