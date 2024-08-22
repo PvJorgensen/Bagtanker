@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useSupabase } from '../../Providers/SupabaseProvider';
-import styles from './getproducts.module.scss'
+import styles from './getproducts.module.scss';
 import { useParams } from 'react-router-dom';
 
 export const GetProducts = () => {
-
-    const [products, setProducts] = useState([])
-    const { supabase } = useSupabase()
-    const { category } = useParams()
-    const [title, setTitle] = useState([])
+    const [products, setProducts] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null); // To keep track of the selected product
+    const { supabase } = useSupabase();
+    const { category = '1fc2c7e5-33b8-11ef-a9aa-001dd8b71d59' } = useParams();
+    const [title, setTitle] = useState([]);
 
     const getData = async () => {
         if (supabase) {
             const { data, error } = await supabase
                 .from("category_product_rel")
-                .select("products(id,title,teaser , images(filename))")
-                .eq('category_id', category)
+                .select("products(id,title,teaser,description,images(filename))")
+                .eq('category_id', category);
             if (error) {
                 console.error("Error Loading products");
             } else {
-                console.log(data);
                 setProducts(data);
             }
         }
@@ -27,18 +26,18 @@ export const GetProducts = () => {
 
     const getTitle = async () => {
         if (supabase) {
-            const {data, error } = await supabase
+            const { data, error } = await supabase
                 .from("categories")
                 .select("title")
                 .eq('id', category)
-                .single()
+                .single();
             if (error) {
                 console.error("Error getting title");
             } else {
-                setTitle(data.title)
+                setTitle(data.title);
             }
         }
-    }
+    };
 
     useEffect(() => {
         getData();
@@ -52,23 +51,48 @@ export const GetProducts = () => {
         return words.slice(0, wordLimit).join(' ') + '...';
     };
 
-  return (
-    <div>
-        <h2>{title}</h2>
-        <div className={styles.productWrapper}>
-            {products && 
-                products.map((item) => (
-                    <section key={item.products.id} className={styles.products}>
-                        <img src={item.products.images.filename} alt="" />
-                        <div>
-                        <h4>{item.products.title}</h4>
-                        <p>{truncateText(item.products.teaser, 27)}</p>
-                        <button>Læs mere</button>
+    const openModal = (product) => {
+        setSelectedProduct(product);
+    };
+
+    const closeModal = () => {
+        setSelectedProduct(null);
+    };
+
+    return (
+        <div>
+            <h2>{title}</h2>
+            <div className={styles.productWrapper}>
+                {products &&
+                    products.map((item) => (
+                        <section key={item.products.id} className={styles.products}>
+                            <img src={item.products.images.filename} alt="" />
+                            <div>
+                                <h4>{item.products.title}</h4>
+                                <p>{truncateText(item.products.teaser, 27)}</p>
+                                <button onClick={() => openModal(item.products)}>Læs mere</button>
+                            </div>
+                        </section>
+                    ))}
+            </div>
+
+            {/* Modal */}
+            {selectedProduct && (
+                <div className={styles.modalOverlay} onClick={closeModal}>
+                    <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+                        <button className={styles.closeButton} onClick={closeModal}>X</button>
+                        <div className={styles.modalContent}>
+                            <h2>{selectedProduct.title}</h2>
+                            <section>
+                            <img src={selectedProduct.images.filename} alt={selectedProduct.title} />
+                            
+                            </section>
+                            <p>Fremgangsmåde:</p>
+                            <p>{selectedProduct.description}</p>
                         </div>
-                    </section>
-                ))
-            }
+                    </div>
+                </div>
+            )}
         </div>
-    </div>
-  )
-}
+    );
+};

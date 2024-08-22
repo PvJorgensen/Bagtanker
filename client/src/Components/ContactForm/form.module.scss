@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.formWrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 60%;
+    margin: auto;
+    margin-top: 30px;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 6%;
+
+    .formBox {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            width: 56%;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #ECECEC;
+            border: none;
+            border-radius: 3px;
+        }
+
+        textarea {
+            width: 56%;
+            margin-bottom: 10px;
+            font-family: "Open Sans", sans-serif;
+            padding: 15px;
+            min-height: 150px;
+            background-color: #ECECEC;
+            border: none;
+            resize: none;
+            border-radius: 3px;
+        }
+
+        .btnContainer {
+            display: flex;
+            justify-content: center;
+
+            button {
+                width: 20%;
+                padding: 10px;
+                background-color: #5F657B;
+                border: none;
+                border-radius: 3px;
+                color: white;
+            }
+        }
+    }
+
+    .imgContainer {
+        margin: auto;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        margin: 0 0 10px 0;
+    }
+}

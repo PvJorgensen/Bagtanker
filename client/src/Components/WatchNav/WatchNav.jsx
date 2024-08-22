@@ -18,7 +18,7 @@ export const WatchNav = () => {
   const secondTitles = {
     '1fc2c7e5-33b8-11ef-a9aa-001dd8b71d59': 'Morgenbrød',
     '1fc2cb0b-33b8-11ef-a9aa-001dd8b71d59': 'Baguettes',
-    '1fc2cb8f-33b8-11ef-a9aa-001dd8b71d59': 'Fransbrød',
+    '1fc2cb8f-33b8-11ef-a9aa-001dd8b71d59': 'Franskbrød',
     '1fc2cbec-33b8-11ef-a9aa-001dd8b71d59': 'Kager',
     '1fc2cc4a-33b8-11ef-a9aa-001dd8b71d59': 'Rugbrød',
     '1fc2cc9c-33b8-11ef-a9aa-001dd8b71d59': 'Grovbrød',
