@@ -8,13 +8,8 @@ import styles from './logon.module.scss'
 export const Logon = () => {
   const { supabase } = useSupabase()
   const { loginData, setLoginData } = useAuth()
-  const [showPopup, setShowPopup] = useState(false)
   const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const { register, handleSubmit,formState: { errors },} = useForm()
 
   const handleLogin = async ({ email, password }) => {
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -28,9 +23,7 @@ export const Logon = () => {
       console.log("logged in", data)
       sessionStorage.setItem("supabase.auth.token", JSON.stringify(data))
       setLoginData(data)
-      setShowPopup(true)
       setTimeout(() => {
-        setShowPopup(false)
         navigate('/LoggedIn')
       }, 3000)
     }
@@ -43,19 +36,13 @@ export const Logon = () => {
           <div>
             <h2>Login</h2>
             <p>Indtast din email og dit password for at logge ind.</p>
-            <input
-              placeholder='Indtast din email'
-              type="email"
-              id="email"
+            <input placeholder='Indtast din email' type="email" id="email"
               {...register("email", { required: true })}
             />
             {errors.email && <span>This field is required</span>}
           </div>
           <div>
-            <input
-              placeholder='Indtast dit password'
-              type="password"
-              id="password"
+            <input placeholder='Indtast dit password' type="password" id="password"
               {...register("password", { required: true })}
             />
             {errors.password && <span>This field is required</span>}
@@ -65,12 +52,6 @@ export const Logon = () => {
           </div>
         </form>
       ) : null}
-
-      {showPopup && (
-        <div className={styles.popup}>
-          <p>Du er nu logget ind!</p>
-        </div>
-      )}
     </>
   )
 }
